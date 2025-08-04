@@ -65,7 +65,7 @@ For the moment, appreciating both AIs, I applaud Claude.
 
 ## Download
 
-#### ✅ [**Download the latest Windows Standalone EXE here**](https://github.com/hydra3333/unified_diff_patcher/releases/latest/download/unified_diff_patcher.exe)
+#### ✅ [**Download the latest Windows self-contained Standalone EXE here**](https://github.com/hydra3333/unified_diff_patcher/releases/latest/download/unified_diff_patcher.exe)
 
 - This is a **self-contained Standalone EXE** built using **PyInstaller**.
 - No Python installation or external dependencies required.
