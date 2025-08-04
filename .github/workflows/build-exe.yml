@@ -31,7 +31,15 @@ jobs:
           set PYTHONOPTIMIZE=1 && pyinstaller --onefile --clean --name unified_diff_patcher --console --noupx unified_diff_patcher.py
         shell: cmd
 
-      # 5. Debug: List output files
+      # 5. Fail early if EXE is missing
+      - name: Verify EXE exists
+        run: |
+          if not exist dist\unified_diff_patcher.exe (
+            echo ERROR: EXE not found. Build failed.
+            exit /b 1
+          )
+
+      # 6. Debug: List build output
       - name: List build output
         run: |
           dir
@@ -39,18 +47,38 @@ jobs:
           dir build
         shell: cmd
 
-      # 6. Install UPX for compression
+      # 7. Install UPX for compression
       - name: Install UPX
         run: |
           choco install upx --no-progress
 
-      # 7. Compress EXE with UPX (forced)
+      # 8. Compress EXE with UPX (optional, won't fail)
       - name: Compress EXE with UPX
         run: |
-          upx --force --best --lzma dist\unified_diff_patcher.exe
+          upx --force --best --lzma dist\unified_diff_patcher.exe || echo "UPX compression failed, continuing..."
+        shell: cmd
 
-      # 8. Upload EXE to GitHub Release
+      # 9. Determine artifact name (include release tag or 'manual-build')
+      - name: Set artifact name
+        id: artifact_name
+        run: |
+          if "%GITHUB_EVENT_NAME%"=="release" (
+            echo ARTIFACT_NAME=unified_diff_patcher-%GITHUB_REF_NAME%>> %GITHUB_ENV%
+          ) else (
+            echo ARTIFACT_NAME=unified_diff_patcher-manual-build>> %GITHUB_ENV%
+          )
+        shell: cmd
+
+      # 10. Upload EXE as a GitHub Actions artifact
+      - name: Upload EXE as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: dist/unified_diff_patcher.exe
+
+      # 11. Upload EXE to GitHub Release (only if triggered by release)
       - name: Upload EXE to release
+        if: github.event_name == 'release'
         uses: softprops/action-gh-release@v2
         with:
           files: dist/unified_diff_patcher.exe
