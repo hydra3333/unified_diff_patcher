@@ -60,15 +60,16 @@ For the moment, appreciating both AIs, I applaud Claude.
 
 ## Download
 
-### ✅ [**Download the latest Windows EXE here**](https://github.com/hydra3333/unified_diff_patcher/releases/latest/download/unified_diff_patcher.exe)
+#### ✅ [**Download the latest Windows EXE here**](https://github.com/hydra3333/unified_diff_patcher/releases/latest/download/unified_diff_patcher.exe)
 
 - This is a **self-contained EXE** built using **PyInstaller**.
 - No Python installation or external dependencies required.
 - Works on **Windows 10 and 11**.
 
 
-### ✅ [**Alternatively, download the latest Release to obtain the raw python `Unified_Diff_Patcher.py`**] (https://github.com/hydra3333/unified_diff_patcher/releases/latest)
+#### ✅ [**Or, Download the latest source .zip to obtain `Unified_Diff_Patcher.py`**](https://github.com/hydra3333/unified_diff_patcher/releases/latest)
 
+- `Unified_Diff_Patcher.py` is in the downloaded .zip file.
 - `Unified_Diff_Patcher.py` uses the same comandline options as the **self-contained EXE**.
 - Works in **Python 3.13.5+**.
 
