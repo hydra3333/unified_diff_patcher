@@ -1,6 +1,6 @@
 # Unified Diff Patcher
 
-A robust Python-based utility for applying unified diff patches (`.patch` or `.diff` files) to source files, now also available as a **standalone Windows EXE** for users without Python installed.
+A robust Python-based utility for applying unified diff patches (`.patch` or `.diff` files) to source files.
 
 ![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-lightgrey) ![License](https://img.shields.io/badge/license-AGPL--3.0-green)
 
@@ -8,9 +8,11 @@ A robust Python-based utility for applying unified diff patches (`.patch` or `.d
 
 ## Overview
 
-Unified Diff Patcher applies unified diff patches to original files and creates numbered output files (e.g., `program.py` → `program.001.py`). It works like `git apply` while preserving original line endings and handling complex edge cases.
+Unified Diff Patcher applies unified diff patches to original files and creates sequentially numbered output files (e.g., `program.py` → `program.001.py`).
+It works like traditional `git apply` while preserving original line ending styles in files from other OSs (eg Windows, Linux) and handling complex edge cases.
 
-Now you can **download and run it as a single `.exe` file** without installing Python.
+Unified Diff Patcher can be **downloaded and run it as a single standalone Windows `.exe` file** without installing Python,
+or as a standard .py file in the Release source (the .exe is built automatically by github for each Release).
 
 This tool only runs on Windows 10+.    
 
