@@ -1,6 +1,6 @@
 # Unified Diff Patcher
 
-A robust Python-based utility for applying unified diff patches (`.patch` or `.diff` files) to source files.
+A robust Python-based utility for applying unified diff patches (`.patch` or `.diff` files) to source files, with intelligent line ending preservation and edge case handling.
 
 ![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-lightgrey) ![License](https://img.shields.io/badge/license-AGPL--3.0-green)
 
@@ -26,12 +26,35 @@ Although both Claude AI and ChatGPT AI both can and do make mistakes when in pro
 
 Funnily enough, Claude AI found in program comments "Author: ChatGPT" and added "(Enhanced by Claude)" to that comment.    
 
-Both AIs are hampered in the sense that the free plans ate extremely limited in that they
+Both AIs are hampered in the sense that the free plans are limited in that they
 do not let you iterate development much due to their analyses and output limits
 ... however, even when subscribing to the first level plans the limits
 are still substantial enough to impede development, but you can get stuff done.    
 
 For the moment, appreciating both AIs, I applaud Claude.
+
+---
+
+## Key Features
+
+### Core Functionality
+- **Git-style compatibility**: Handles standard git diff formats with `a/` and `b/` prefixes
+- **Multiple file support**: Apply patches to multiple files in one go
+- **Empty file support**: Uses system default line endings for empty files
+- **Numbered output files**: Creates auto-numbered patched files eg `file.001.ext`, `file.002.ext`, etc. without overwriting any existing files
+- **Cross-platform patch file compatibility**: Handles patches created on different OSes i.e. different styles of line endings
+- **Line ending intelligence**: Preserves source file style line endings (Windows, Unix, Mac) regardless of patch file style
+- **Comprehensive error handling**: Graceful handling of malformed patches and missing files
+- **Dry-run mode**: Preview changes before applying
+
+### Edge Case Support
+- **Empty files**: Adding content to completely empty files
+- **Single-line files**: Replacement and modification of single-line files
+- **No trailing newlines**: Files that don't end with newline characters
+- **Multiple hunks**: Multiple separate changes within the same file
+- **Complex operations**: Mixed add/delete/replace operations in single hunks
+- **Whitespace-only changes**: Precise handling of spaces and tabs
+- **Large context hunks**: Hunks with many surrounding context lines
 
 ---
 
@@ -93,29 +116,6 @@ Verbose dry-run for debugging:
 ```cmd
 unified_diff_patcher.exe changes.diff --dry-run --verbose
 ```
-
----
-
-## Key Features
-
-### Core Functionality
-- **Git-style compatibility**: Handles standard git diff formats with `a/` and `b/` prefixes
-- **Multiple file support**: Apply patches to multiple files in one go
-- **Empty file support**: Uses system default line endings for empty files
-- **Numbered output files**: Creates auto-numbered patched files eg `file.001.ext`, `file.002.ext`, etc. without overwriting any existing files
-- **Cross-platform patch file compatibility**: Handles patches created on different OSes i.e. different styles of line endings
-- **Line ending intelligence**: Preserves source file style line endings (Windows, Unix, Mac) regardless of patch file style
-- **Comprehensive error handling**: Graceful handling of malformed patches and missing files
-- **Dry-run mode**: Preview changes before applying
-
-### Edge Case Support
-- **Empty files**: Adding content to completely empty files
-- **Single-line files**: Replacement and modification of single-line files
-- **No trailing newlines**: Files that don't end with newline characters
-- **Multiple hunks**: Multiple separate changes within the same file
-- **Complex operations**: Mixed add/delete/replace operations in single hunks
-- **Whitespace-only changes**: Precise handling of spaces and tabs
-- **Large context hunks**: Hunks with many surrounding context lines
 
 ---
 
