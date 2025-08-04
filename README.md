@@ -1,45 +1,55 @@
 # Unified Diff Patcher
 
-A robust Python utility for applying unified diff patches (.patch or .diff files) to source files, with intelligent line ending preservation and edge case handling.
-
 ![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-lightgrey) ![License](https://img.shields.io/badge/license-AGPL--3.0-green)
+
+A robust Python-based commandline utility for applying unified diff patches
+(`.patch` or `.diff` files) to source files,
+with intelligent line ending preservation and edge case handling.
+
+Unified Diff Patcher may be helpful on Windows, which does not have a native `patch` utility, 
+eg when you ask AIs such as Claude or ChatGPT to provide a .diff file for program updates - 
+i.e. 'short' output vs a long fully updated source - hopefully extending time to AI chat limits reached.
+
+---
 
 ## Overview
 
-This tool applies unified diff patches to original files and creates numbered output files (e.g., `program.py` → `program.001.py`). It's designed to work like git's patch command while preserving the original file's line ending style and handling complex edge cases.    
+Unified Diff Patcher applies unified diff patches to original files and creates sequentially numbered output files (e.g., `program.py` → `program.001.py`).
+It works like traditional `git apply` while preserving original line ending styles in files from other OSs (eg Windows, Linux) and handling complex edge cases.
 
-This tool only runs on Windows 10+.
+Unified Diff Patcher can be **downloaded and run it as a single standalone Windows `.exe` file** without installing Python,
+or as a standard .py file in the Release source (the .exe is built automatically by github for each Release).
+
+This tool only runs on Windows 10+.    
+
+---
 
 ## Foreward
 
 Drafted by ChatGPT AI (with substantial logic errors), fixed and extended by Claude AI.    
 
-Although both Claude AI and ChatGPT AI both can and do make mistakes when in programming python, Claude AI seems to make fewer mistakes and fixes them well when asked.    
-
-Funnily enough, Claude AI found in program comments "Author: ChatGPT" and added "(Enhanced by Claude)" to that comment.    
-
-Both AIs are hampered in the sense that the free plans ate extremely limited in that they
+Although both Claude AI and ChatGPT AI both can and do make mistakes when in programming python, Claude AI seems to make fewer mistakes and fixes them well when asked.
+Funnily enough, Claude AI found in program comments "Author: ChatGPT" and added "(Enhanced by Claude)" to that comment.
+Both AIs are hampered in the sense that the free plans are limited in that they
 do not let you iterate development much due to their analyses and output limits
 ... however, even when subscribing to the first level plans the limits
 are still substantial enough to impede development, but you can get stuff done.    
 
-For the moment, appreciating both AIs, I applaud Claude    
+For the moment, appreciating both AIs, I applaud Claude.
+
+---
 
 ## Key Features
 
 ### Core Functionality
-- **Multiple file support**: Apply patches to multiple files in a single operation
-- **Numbered output files**: Creates `file.001.ext`, `file.002.ext`, etc. without overwriting originals
-- **Dry-run mode**: Preview changes without modifying files
 - **Git-style compatibility**: Handles standard git diff formats with `a/` and `b/` prefixes
-- **Comprehensive error handling**: Graceful handling of malformed patches and missing files
-
-### Line Ending Intelligence
-- **Automatic detection**: Detects Windows (`\r\n`), Unix (`\n`), and Mac (`\r`) line endings
-- **Preservation**: Output files maintain the original file's line ending style
-- **Cross-platform compatibility**: Unix patches work on Windows files (and vice versa)
-- **Mixed file handling**: Uses dominant line ending style in files with mixed endings
+- **Multiple file support**: Apply patches to multiple files in one go
 - **Empty file support**: Uses system default line endings for empty files
+- **Numbered output files**: Creates auto-numbered patched files eg `file.001.ext`, `file.002.ext`, etc. without overwriting any existing files
+- **Cross-platform patch file compatibility**: Handles patches created on different OSes i.e. different styles of line endings
+- **Line ending intelligence**: Preserves source file style line endings (Windows, Unix, Mac) regardless of patch file style
+- **Comprehensive error handling**: Graceful handling of malformed patches and missing files
+- **Dry-run mode**: Preview changes before applying
 
 ### Edge Case Support
 - **Empty files**: Adding content to completely empty files
@@ -50,202 +60,76 @@ For the moment, appreciating both AIs, I applaud Claude
 - **Whitespace-only changes**: Precise handling of spaces and tabs
 - **Large context hunks**: Hunks with many surrounding context lines
 
-## Installation & Prerequisites
+---
 
-### Requirements
-- Python 3.6 or later
-- No external dependencies (uses only Python standard library)
+## Download
 
-### Files Needed
-- `unified_diff_patcher.py` - The main patcher script
-- `run_unified_diff_patcher_TESTS.py` - Comprehensive test suite (optional)
+#### ✅ [**Download the latest Windows EXE here**](https://github.com/hydra3333/unified_diff_patcher/releases/latest/download/unified_diff_patcher.exe)
 
-## Usage
+- This is a **self-contained EXE** built using **PyInstaller**.
+- No Python installation or external dependencies required.
+- Works on **Windows 10 and 11**.
 
-### Basic Usage
-```bash
-python unified_diff_patcher.py patchfile.diff
+
+#### ✅ [**Or, Download the latest source .zip to obtain `Unified_Diff_Patcher.py`**](https://github.com/hydra3333/unified_diff_patcher/releases/latest)
+
+- `Unified_Diff_Patcher.py` is in the downloaded .zip file.
+- `Unified_Diff_Patcher.py` uses the same comandline options as the **self-contained EXE**.
+- Works in **Python 3.13.5+**.
+
+---
+
+## Running the standalone EXE    
+#### (`Unified_Diff_Patcher.py` uses the same comandline options)
+
+Open **Command Prompt** in the folder with your patch file and run:
+
+```cmd
+unified_diff_patcher.exe patchfile.diff
 ```
 
-### Command Line Options
+---
 
-| Option | Description |
-|--------|-------------|
-| `patchfile` | Path to the .diff or .patch file (required) |
-| `--dry-run` | Show what would happen without making changes |
-| `--verbose` | Show detailed hunk processing information |
-| `--base-dir PATH` | Base directory where original files are located |
+### Command-Line Options ()
+
+| Option           | Description                                        |
+|------------------|----------------------------------------------------|
+| `patchfile`      | Path to the `.diff` or `.patch` file (required)   |
+| `--dry-run`      | Show what would happen without making changes      |
+| `--verbose`      | Show detailed hunk processing information          |
+| `--base-dir PATH`| Base directory where original files are located    |
+
+---
 
 ### Usage Examples
 
-#### Apply patch in current directory
-```bash
-python unified_diff_patcher.py changes.diff
+Apply patch in current directory:
+```cmd
+unified_diff_patcher.exe changes.diff
 ```
 
-#### Preview changes without applying
-```bash
-python unified_diff_patcher.py changes.diff --dry-run
+Preview changes without applying:
+```cmd
+unified_diff_patcher.exe changes.diff --dry-run
 ```
 
-#### Apply patch to files in specific directory
-```bash
-python unified_diff_patcher.py changes.diff --base-dir "./src"
+Apply patch to files in specific directory:
+```cmd
+unified_diff_patcher.exe changes.diff --base-dir "C:\path\to\files"
 ```
 
-#### Verbose dry-run for debugging
-```bash
-python unified_diff_patcher.py changes.diff --dry-run --verbose
+Verbose dry-run for debugging:
+```cmd
+unified_diff_patcher.exe changes.diff --dry-run --verbose
 ```
 
-#### Windows path example
-```bash
-python unified_diff_patcher.py changes.diff --base-dir "C:\path\to\files"
-```
+---
 
-## Supported Patch Formats
+## Installation Requirements
+- **Standalone EXE version:** No requirements (self-contained)
+- **Python script version:** Python 3.13+ i.e. if running the source .py rather than the Standalone EXE, there are no external dependencies (uses only Python standard library)
 
-### Standard Unified Diff Format
-```diff
---- a/file.txt
-+++ b/file.txt
-@@ -1,3 +1,4 @@
- Line 1
- Line 2
- Line 3
-+Line 4
-```
-
-### Multiple Files in Single Patch
-```diff
---- a/file1.txt
-+++ b/file1.txt
-@@ -1,2 +1,2 @@
--Old line
-+New line
- Context line
-
---- a/file2.txt
-+++ b/file2.txt
-@@ -1,3 +1,4 @@
- Line 1
-+Inserted line
- Line 2
- Line 3
-```
-
-### Multiple Hunks in Single File
-```diff
---- a/file.txt
-+++ b/file.txt
-@@ -1,2 +1,2 @@
--First change
-+First replacement
- Context
-@@ -5,2 +5,2 @@
- More context
--Second change
-+Second replacement
-```
-
-## Line Ending Handling
-
-### Detection and Preservation
-The patcher automatically detects the line ending style of each source file and preserves it in the output:
-
-- **Windows files** (`\r\n`) → **Windows output** (`\r\n`)
-- **Unix files** (`\n`) → **Unix output** (`\n`) 
-- **Mac files** (`\r`) → **Mac output** (`\r`)
-- **Mixed files** → **Dominant style** wins
-- **Empty files** → **System default** (Windows: `\r\n`, Unix: `\n`)
-
-### Cross-Platform Compatibility
-The tool handles scenarios where patch and source files have different line endings:
-
-| Scenario | Source File | Patch File | Output File |
-|----------|-------------|------------|-------------|
-| Windows dev, Unix patch | `\r\n` | `\n` | `\r\n` |
-| Unix dev, Windows patch | `\n` | `\r\n` | `\n` |
-| Mixed environment | `\r\n` | `\n` | `\r\n` |
-
-## Output and Feedback
-
-### Standard Output
-```
-[OK] Patched 'file.txt' -> 'file.001.txt' [line ending: '\r\n']
-[SKIP] Original file 'missing.txt' not found.
-[ERROR] Failed to apply patch to 'broken.txt': Context mismatch
-
-Summary:
-  Files processed: 3
-  Patched:         1
-  Skipped:         1
-  Errors:          1
-```
-
-### Verbose Output
-```
-[PROCESSING] file.txt
-  Original file has 3 lines
-  Detected source line ending: '\r\n'
-  Detected patch line ending: '\n'
-  NOTE: Patch and source have different line endings - output will match source
-    Applying hunk: @@ -1,3 +1,4 @@
-      Old: start=1, count=3
-      New: start=1, count=4
-      Applying at index 0 with offset 0
-        Line 1
-        Line 2
-        Line 3
-      + Line 4
-      Replacing 3 lines at index 0 with 4 lines
-  Patched file has 4 lines
-```
-
-## Testing
-
-### Comprehensive Test Suite
-The included test suite (`run_unified_diff_patcher_TESTS.py`) validates:
-
-- **16 comprehensive test cases** covering all edge cases
-- **Line ending preservation** across different scenarios
-- **Cross-platform compatibility** testing
-- **Error condition handling**
-
-### Running Tests
-```bash
-python run_unified_diff_patcher_TESTS.py
-```
-
-### Test Coverage
-- ✅ Simple operations (add, delete, replace)
-- ✅ Complex scenarios (multiple hunks, mixed operations)
-- ✅ Edge cases (empty files, no newlines, single lines)
-- ✅ Line ending variations (Windows, Unix, mixed)
-- ✅ Cross-platform patches (Unix patch on Windows file)
-- ✅ Whitespace handling (spaces, tabs)
-- ✅ Large context hunks
-- ✅ Error conditions (missing files, invalid patches)
-
-## Technical Details
-
-### Algorithm Overview
-1. **Parse patch file**: Extract file headers and hunks
-2. **Detect line endings**: Analyze source file's line ending style
-3. **Apply hunks sequentially**: Process each hunk with offset tracking
-4. **Convert line endings**: Ensure output matches source style
-5. **Write numbered output**: Create new file without overwriting original
-
-### Error Handling
-- **Malformed patches**: Clear error messages for invalid hunk headers
-- **Missing files**: Continues processing other files with warnings
-- **Context mismatches**: Warnings when patch context doesn't match source
-- **Out-of-bounds operations**: Prevents crashes from invalid hunk ranges
-
-### Performance Characteristics
-- **Memory efficient**: Processes files line-by-line without loading entire files
-- **Fast processing**: Optimized for typical patch sizes
-- **Minimal dependencies**: Uses only Python standard library
+---
 
 ## Limitations and Considerations
 
@@ -260,7 +144,9 @@ python run_unified_diff_patcher_TESTS.py
 - **Backup important files**: Although originals aren't modified, backups are recommended
 - **Verify context**: Ensure patches match the intended file versions
 
-## Examples of Supported Operations
+---
+
+## Examples of Supported Patch Operations
 
 ### Adding Lines
 ```diff
@@ -299,9 +185,69 @@ python run_unified_diff_patcher_TESTS.py
  Keep line 5
 ```
 
+---
+
+## Example Output and Feedback
+
+### Standard Output
+```
+[OK] Patched 'file.txt' -> 'file.001.txt' [line ending: '\r\n']
+[SKIP] Original file 'missing.txt' not found.
+[ERROR] Failed to apply patch to 'broken.txt': Context mismatch
+
+Summary:
+  Files processed: 3
+  Patched:         1
+  Skipped:         1
+  Errors:          1
+```
+
+### Verbose Output
+```
+[PROCESSING] file.txt
+  Original file has 3 lines
+  Detected source line ending: '\r\n'
+  Detected patch line ending: '\n'
+  NOTE: Patch and source have different line endings - output will match source
+    Applying hunk: @@ -1,3 +1,4 @@
+      Old: start=1, count=3
+      New: start=1, count=4
+      Applying at index 0 with offset 0
+        Line 1
+        Line 2
+        Line 3
+      + Line 4
+      Replacing 3 lines at index 0 with 4 lines
+  Patched file has 4 lines
+```
+
+---
+
+## Technical Details
+
+### Algorithm Overview
+1. **Parse patch file**: Extract file headers and hunks
+2. **Detect line endings**: Analyze source file's line ending style
+3. **Apply hunks sequentially**: Process each hunk with offset tracking
+4. **Convert line endings**: Ensure output matches source style
+5. **Write numbered output**: Create new file without overwriting original
+
+### Error Handling
+- **Malformed patches**: Clear error messages for invalid hunk headers
+- **Missing files**: Continues processing other files with warnings
+- **Context mismatches**: Warnings when patch context doesn't match source
+- **Out-of-bounds operations**: Prevents crashes from invalid hunk ranges
+
+### Performance Characteristics
+- **Memory efficient**: Processes files line-by-line without loading entire files
+- **Fast processing**: Optimized for typical patch sizes
+- **Minimal dependencies**: Uses only Python standard library
+
+---
+
 ## Troubleshooting
 
-### Common Issues
+### Common Patching Issues
 
 **"Hunk cannot be applied"**
 - Patch may be for different version of file
@@ -320,33 +266,12 @@ python run_unified_diff_patcher_TESTS.py
 
 ### Debug Mode
 Use `--verbose --dry-run` to see exactly how patches would be applied:
-```bash
-python unified_diff_patcher.py problem.patch --verbose --dry-run
+```cmd
+unified_diff_patcher.exe problem.patch --verbose --dry-run
 ```
-
-## Version History
-
-### Current Version
-- ✅ Complete unified diff support
-- ✅ Intelligent line ending handling
-- ✅ Comprehensive edge case support
-- ✅ Cross-platform compatibility
-- ✅ Extensive test coverage
-- ✅ Production-ready reliability
-
-## License
-
-This tool is provided as-is for educational and practical use. Feel free to modify and distribute according to your needs.
-
-## Contributing
-
-To extend or improve this tool:
-1. Add test cases to `run_unified_diff_patcher_TESTS.py`
-2. Ensure all existing tests pass
-3. Test edge cases thoroughly
-4. Maintain cross-platform compatibility
-5. Preserve line ending intelligence
 
 ---
 
-**This unified diff patcher provides git-like patch functionality with enhanced line ending handling, making it ideal for Windows development environments while maintaining cross-platform compatibility.**
+## License
+This tool is available only under the AGPL-3.0 license.
+
