@@ -71,7 +71,7 @@ For the moment, appreciating both AIs, I applaud Claude.
 - No Python installation or external dependencies required.
 - Works on **Windows 10 and 11**.
 - Once automatically packed into a **self-contained Standalone EXE** by the ubiquitous **PyInstaller**, Windows Defender falsely flags it as containing malware. If you're uncomfortable with that, perhaps download (and review) the source .py and run that instead.
-- To verify that the `unified_diff_patcher.exe` you downloaded matches the published Release and has not been tampered with, you may choose to follow these steps:
+- Or, perhaps, to verify that the `unified_diff_patcher.exe` you downloaded matches the published github auto-built Release and has not been tampered with, you may choose to follow these steps:
 1. Download both of these from the Release:
    - `unified_diff_patcher.exe`
    - `unified_diff_patcher.exe.sha512`
@@ -80,8 +80,8 @@ For the moment, appreciating both AIs, I applaud Claude.
 ```
 certutil -hashfile unified_diff_patcher.exe SHA512
 ```
-4. Compare the output hash with the contents of the unified_diff_patcher.exe.sha512 file. They should match exactly.
-If the hashes do not match, do not run the executable as it may be corrupted or tampered with.
+4. Compare the output hash with the contents of the `unified_diff_patcher.exe.sha512` file. They **should** match exactly.
+If the SHA512 hashes do not match, do not run the executable as it may have been tampered with.
 
 #### ✅ [**Or, Download the latest source .zip to obtain `Unified_Diff_Patcher.py`**](https://github.com/hydra3333/unified_diff_patcher/releases/latest)
 
