@@ -70,7 +70,7 @@ For the moment, appreciating both AIs, I applaud Claude.
 - This is a **self-contained Standalone EXE** built using **PyInstaller**.
 - No Python installation or external dependencies required.
 - Works on **Windows 10 and 11**.
-- Once automatically packed into a **self-contained Standalone EXE** by the ubiquitous **PyInstaller**, Windows Defender falsely flagged it as containing malware. If you're uncomfortable with that, perhaps download (and review) the source .py and run that instead.
+- Once automatically packed into a **self-contained Standalone EXE** by the ubiquitous **PyInstaller**, Windows Defender falsely flags it as containing malware. If you're uncomfortable with that, perhaps download (and review) the source .py and run that instead.
 
 
 #### ✅ [**Or, Download the latest source .zip to obtain `Unified_Diff_Patcher.py`**](https://github.com/hydra3333/unified_diff_patcher/releases/latest)
