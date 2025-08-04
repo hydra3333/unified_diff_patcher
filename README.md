@@ -129,7 +129,7 @@ unified_diff_patcher.exe changes.diff --dry-run --verbose
 
 ## Installation Requirements
 - **Self-contained Standalone EXE version:** No requirements (**PyInstaller** packs a python interpreter runtime into the .exe so no need to install python separately)
-- **Python script version:** Python 3.13+ i.e. if running the source .py rather than the Self-contained Standalone EXE; there are no other external dependencies (uses only Python standard library)
+- **Python script version:** Python 3.13+ i.e. if running the source .py rather than the self-contained Standalone EXE; there are no other external dependencies (uses only Python standard library)
 
 ---
 
