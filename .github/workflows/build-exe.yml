@@ -3,6 +3,7 @@ name: Build EXE and Upload to Release
 on:
   release:
     types: [published]
+    workflow_dispatch:
 
 jobs:
   build-windows-exe:
