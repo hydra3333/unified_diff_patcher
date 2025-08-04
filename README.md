@@ -8,7 +8,8 @@ with intelligent line ending preservation and edge case handling.
 
 Unified Diff Patcher may be helpful on Windows, which does not have a native `patch` utility, 
 eg when you ask AIs such as Claude or ChatGPT to provide a .diff file for program updates - 
-i.e. 'short' output vs a long fully updated source - hopefully extending time to AI next chat limit reached.
+i.e. 'short' output vs a long fully updated source - hopefully extending time to
+the next AI chat limit being reached.
 
 ---
 
