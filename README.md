@@ -18,7 +18,7 @@ the next AI chat limit being reached.
 Unified Diff Patcher applies unified diff patches to original files and creates sequentially numbered output files (e.g., `program.py` → `program.001.py`).
 It works like traditional `git apply` while preserving original line ending styles in files from other OSs (eg Windows, Linux) and handling complex edge cases.
 
-Unified Diff Patcher can be **downloaded and run it as a single standalone Windows `.exe` file** without installing Python,
+Unified Diff Patcher can be **downloaded and run it as a single Windows Self-contained Standalone `.exe` file** without installing Python,
 or as a standard .py file in the Release source (the .exe is built automatically by github for each Release).
 
 This tool only runs on Windows 10+.    
@@ -81,7 +81,7 @@ For the moment, appreciating both AIs, I applaud Claude.
 
 ---
 
-## Running the standalone EXE    
+## Running the Self-contained Standalone EXE   
 #### (`Unified_Diff_Patcher.py` uses the same comandline options)
 
 Open **Command Prompt** in the folder with your patch file and run:
@@ -128,8 +128,8 @@ unified_diff_patcher.exe changes.diff --dry-run --verbose
 ---
 
 ## Installation Requirements
-- **Standalone EXE version:** No requirements (self-contained)
-- **Python script version:** Python 3.13+ i.e. if running the source .py rather than the Standalone EXE, there are no external dependencies (uses only Python standard library)
+- **Self-contained Standalone EXE version:** No requirements (**PyInstaller** packs a python interpreter runtime into the .exe so no need to install python separately)
+- **Python script version:** Python 3.13+ i.e. if running the source .py rather than the Self-contained Standalone EXE; there are no other external dependencies (uses only Python standard library)
 
 ---
 
