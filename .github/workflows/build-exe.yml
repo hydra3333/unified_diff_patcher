@@ -1,9 +1,10 @@
 name: Build EXE and Upload to Release
 # .github/workflows/build-exe.yml
+
 on:
   release:
     types: [published]
-    workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   build-windows-exe:
@@ -28,7 +29,8 @@ jobs:
       # 4. Build EXE with PyInstaller (optimized)
       - name: Build executable
         run: |
-          pyinstaller --onefile --clean --name unified_diff_patcher --console --noupx -O unified_diff_patcher.py
+          set PYTHONOPTIMIZE=1
+          pyinstaller --onefile --clean --name unified_diff_patcher --console --noupx unified_diff_patcher.py
         shell: cmd
 
       # 5. Install UPX for compression
