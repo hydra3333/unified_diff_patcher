@@ -48,18 +48,18 @@ jobs:
           dir build
         shell: cmd
 
-      # 7. Install UPX for compression
+      # removed 7. Install UPX for compression
       #- name: Install UPX
       #  run: |
       #    choco install upx --no-progress
-
-      # 8. Compress EXE with UPX (optional, won't fail)
+      #
+      # removed 8. Compress EXE with UPX (optional, won't fail)
       #- name: Compress EXE with UPX
       #  run: |
       #    upx --force --best --lzma dist\unified_diff_patcher.exe || echo "UPX compression failed, continuing..."
       #  shell: cmd
 
-      # 9. Determine artifact name (include release tag or 'manual-build')
+      # 7. Determine artifact name (include release tag or 'manual-build')
       - name: Set artifact name
         id: artifact_name
         run: |
@@ -70,18 +70,28 @@ jobs:
           )
         shell: cmd
 
-      # 10. Upload EXE as a GitHub Actions artifact
-      - name: Upload EXE as artifact
+      # 8. Generate SHA512 checksum
+      - name: Generate SHA512 checksum
+        run: |
+          certutil -hashfile dist\unified_diff_patcher.exe SHA512 > dist\unified_diff_patcher.exe.sha512
+        shell: cmd
+
+      # 9. Upload EXE and SHA512 as a GitHub Actions artifact
+      - name: Upload EXE and SHA512 as artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.ARTIFACT_NAME }}
-          path: dist/unified_diff_patcher.exe
+          path: |
+            dist/unified_diff_patcher.exe
+            dist/unified_diff_patcher.exe.sha512
 
-      # 11. Upload EXE to GitHub Release (only if triggered by release)
-      - name: Upload EXE to release
+      # 10. Upload EXE and SHA512 to GitHub Release (only if triggered by release)
+      - name: Upload EXE and SHA512 to release
         if: github.event_name == 'release'
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/unified_diff_patcher.exe
+          files: |
+            dist/unified_diff_patcher.exe
+            dist/unified_diff_patcher.exe.sha512
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
