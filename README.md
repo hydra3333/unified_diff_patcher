@@ -1,10 +1,14 @@
 # Unified Diff Patcher
 
-A robust Python utility for applying unified diff patches (.patch or .diff files) to source files, with intelligent line ending preservation and comprehensive edge case handling.
+A robust Python utility for applying unified diff patches (.patch or .diff files) to source files, with intelligent line ending preservation and edge case handling.
+
+![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-lightgrey) ![License](https://img.shields.io/badge/license-AGPL--3.0-green)
 
 ## Overview
 
-This tool applies unified diff patches to original files and creates numbered output files (e.g., `program.py` → `program.001.py`). It's designed to work like git's patch command while preserving the original file's line ending style and handling complex edge cases.
+This tool applies unified diff patches to original files and creates numbered output files (e.g., `program.py` → `program.001.py`). It's designed to work like git's patch command while preserving the original file's line ending style and handling complex edge cases.    
+
+This tool only runs on Windows 10+.
 
 ## Foreward
 
