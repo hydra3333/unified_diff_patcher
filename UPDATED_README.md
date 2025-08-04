@@ -67,7 +67,7 @@ For the moment, appreciating both AIs, I applaud Claude.
 - Works on **Windows 10 and 11**.
 
 
-### ✅ [**Alternatively, download the latest release to obtain the raw python `Unified_Diff_Patcher.py`**]
+### ✅ [**Alternatively, download the latest Release to obtain the raw python `Unified_Diff_Patcher.py`**] (https://github.com/hydra3333/unified_diff_patcher/releases/latest)
 
 - `Unified_Diff_Patcher.py` uses the same comandline options as the **self-contained EXE**.
 - Works in **Python 3.13.5+**.
