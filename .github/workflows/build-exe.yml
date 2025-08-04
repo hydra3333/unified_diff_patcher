@@ -1,5 +1,4 @@
 name: Build EXE and Upload to Release
-# .github/workflows/build-exe.yml
 
 on:
   release:
@@ -29,21 +28,28 @@ jobs:
       # 4. Build EXE with PyInstaller (optimized)
       - name: Build executable
         run: |
-          set PYTHONOPTIMIZE=1
-          pyinstaller --onefile --clean --name unified_diff_patcher --console --noupx unified_diff_patcher.py
+          set PYTHONOPTIMIZE=1 && pyinstaller --onefile --clean --name unified_diff_patcher --console --noupx unified_diff_patcher.py
         shell: cmd
 
-      # 5. Install UPX for compression
+      # 5. Debug: List output files
+      - name: List build output
+        run: |
+          dir
+          dir dist
+          dir build
+        shell: cmd
+
+      # 6. Install UPX for compression
       - name: Install UPX
         run: |
           choco install upx --no-progress
 
-      # 6. Compress EXE with UPX
-      - name: Compress EXE
+      # 7. Compress EXE with UPX (forced)
+      - name: Compress EXE with UPX
         run: |
-          upx --best --lzma dist\unified_diff_patcher.exe
+          upx --force --best --lzma dist\unified_diff_patcher.exe
 
-      # 7. Upload EXE to GitHub Release
+      # 8. Upload EXE to GitHub Release
       - name: Upload EXE to release
         uses: softprops/action-gh-release@v2
         with:
