@@ -49,15 +49,15 @@ jobs:
         shell: cmd
 
       # 7. Install UPX for compression
-      - name: Install UPX
-        run: |
-          choco install upx --no-progress
+      #- name: Install UPX
+      #  run: |
+      #    choco install upx --no-progress
 
       # 8. Compress EXE with UPX (optional, won't fail)
-      - name: Compress EXE with UPX
-        run: |
-          upx --force --best --lzma dist\unified_diff_patcher.exe || echo "UPX compression failed, continuing..."
-        shell: cmd
+      #- name: Compress EXE with UPX
+      #  run: |
+      #    upx --force --best --lzma dist\unified_diff_patcher.exe || echo "UPX compression failed, continuing..."
+      #  shell: cmd
 
       # 9. Determine artifact name (include release tag or 'manual-build')
       - name: Set artifact name
