@@ -6,6 +6,21 @@ A robust Python utility for applying unified diff patches (.patch or .diff files
 
 This tool applies unified diff patches to original files and creates numbered output files (e.g., `program.py` → `program.001.py`). It's designed to work like git's patch command while preserving the original file's line ending style and handling complex edge cases.
 
+## Foreward
+
+Drafted by ChatGPT AI (with substantial logic errors), fixed and extended by Claude AI.    
+
+Although both Claude AI and ChatGPT AI both can and do make mistakes when in programming python, Claude AI seems to make fewer mistakes and fixes them well when asked.    
+
+Funnily enough, Claude AI found in program comments "Author: ChatGPT" and added "(Enhanced by Claude)" to that comment.    
+
+Both AIs are hampered in the sense that the free plans ate extremely limited in that they
+do not let you iterate development much due to their analyses and output limits
+... however, even when subscribing to the first level plans the limits
+are still substantial enough to impede development, but you can get stuff done.    
+
+For the moment, appreciating both AIs, I applaud Claude    
+
 ## Key Features
 
 ### Core Functionality
