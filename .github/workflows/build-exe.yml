@@ -38,6 +38,7 @@ jobs:
             echo ERROR: EXE not found. Build failed.
             exit /b 1
           )
+        shell: cmd
 
       # 6. Debug: List build output
       - name: List build output
