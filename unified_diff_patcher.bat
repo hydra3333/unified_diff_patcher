@@ -13,5 +13,5 @@ if "%~1"=="" (
 )
 
 REM Call Python with all arguments passed to this batch file
-python "%~dp0%SCRIPT%" %*
+python "%~dp0%SCRIPT%" %* --verbose
 pause

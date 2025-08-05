@@ -6,10 +6,7 @@ A robust Python-based commandline utility for applying unified diff patches
 (`.patch` or `.diff` files) to source files,
 with intelligent line ending preservation and edge case handling.
 
-Unified Diff Patcher may be helpful on Windows, which does not have a native `patch` utility, 
-eg when you ask AIs such as Claude or ChatGPT to provide a .diff file for program updates - 
-i.e. 'short' output vs a long fully updated source - hopefully extending time to
-the next AI chat limit being reached.
+Unified Diff Patcher may be helpful on Windows, which does not have a native `patch` utility.   
 
 ---
 
@@ -18,8 +15,8 @@ the next AI chat limit being reached.
 Unified Diff Patcher applies unified diff patches to original files and creates sequentially numbered output files (e.g., `program.py` → `program.001.py`).
 It works like traditional `git apply` while preserving original line ending styles in files from other OSs (eg Windows, Linux) and handling complex edge cases.
 
-Unified Diff Patcher can be **downloaded and run it as a single Windows Self-contained Standalone `.exe` file** without installing Python,
-or as a standard .py file in the Release source (the .exe is built automatically by github for each Release).
+Unified Diff Patcher can be downloaded and run as a single Windows Self-contained Standalone `.exe` without installing Python,
+or alternatively as a standard .py file in the Release source (the .exe is built automatically by github for each Release).
 
 This tool only runs on Windows 10+.    
 
@@ -27,16 +24,12 @@ This tool only runs on Windows 10+.
 
 ## Foreward
 
-Drafted by ChatGPT AI (with substantial logic errors), fixed and extended by Claude AI.    
+Drafted by ChatGPT AI (initially with serious logic errors), fixed and extended by Claude AI.    
 
-Although both Claude AI and ChatGPT AI both can and do make mistakes when in programming python, Claude AI seems to make fewer mistakes and fixes them well when asked.
-Funnily enough, Claude AI found in program comments "Author: ChatGPT" and added "(Enhanced by Claude)" to that comment.
-Both AIs are hampered in the sense that the free plans are limited in that they
-do not let you iterate development much due to their analyses and output limits
-... however, even when subscribing to the first level plans the limits
-are still substantial enough to impede development, but you can get stuff done.    
-
-For the moment, appreciating both AIs, I applaud Claude.
+**BEWARE:** both Claude AI and ChatGPT AI consistently fail to provide valid patch files when asked,
+sometimes providing an invalidly formatted patch file and at almost all other times forgetting line numbers
+and then without any warning using rubbish line numbers instead.
+Both acknowledge their consistent failure in this regard.
 
 ---
 
